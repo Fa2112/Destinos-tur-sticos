@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="loading">
+        <div class="yo " ><a href="https://fa2112.github.io/">DISEÑO Y DESARROLLO POR FACUNDO TALAVERA</a></div>
+        <label for="progress">Cargando...</label>
+        <progress id="progress" value="0" max="100"></progress>
+    </div>
+    <div id="overlay">
+            <div class="yo"><a href="https://fa2112.github.io/" target="_blank">DISEÑO Y DESARROLLO POR FACUNDO TALAVERA</a></div>
+            <div class="nav"  id="nav">
+                <div class="navChild "><span id="menuToggle" class="material-symbols-outlined">
+                    menu
+                </span></div>
+                <div class="navChild "><a href="https://github.com/Fa2112" target="_blank"><img src="svg/GitHub.svg"> <span>Fa2112</span></a></div>
+                <div class="navChild"><a href="https://www.linkedin.com/in/facundo-talavera-30692821a/" target="_blank"><img src="svg/LinkedIn.svg"> <span>Facundo Talavera</span></a></div>
+            </div>
+            <div class="content">
+                <div id="title" class="title">Titulo</div>
+                <div id="desc" class="desc"><a id="direct" href="https://www.iguazuturismo.com.ar/que-hacer/ruinas-san-ignacio.html" target="_blank">VISITAR<span class="material-symbols-outlined">
+                    near_me
+                </span></a> </div>
+                
+            </div>
+    </div>
+    <script type="module" src="main.js"></script>
+</body>
+<style>
+
+    @font-face {
+  font-family: 'BlueScreens Condensed black';
+  src: url('font/TT Bluescreens Trial Condensed Black.ttf') format('truetype');
+}
+    @font-face {
+  font-family: 'BlueScreens bold';
+  src: url('font/TT Bluescreens Trial DemiBold.ttf') format('truetype');
+}
+    @font-face {
+  font-family: 'BlueScreens';
+  src: url('font/TT Bluescreens Trial Medium.ttf') format('truetype');
+}
+
+    html 
+    body {
+        
+        font-size: 16px;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+    }
+
+    label {
+        transition: 0.3s;
+    }
+    .faded label {
+        opacity: 0;
+    }
+    .loading{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0, 1    );
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+        color: white;
+        font-family: "BlueScreens";
+        z-index : 50;
+    }
+    #progress {
+        width: 30%;
+    }
+    .content {
+        width: auto;
+    }
+
+        .nav {
+            transition: 1s cubic-bezier(0.55, -0.5, 0.265, 1.55);
+            border-right: rgba(255,255,255, 0.5) 1px solid;
+            width: 4vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: start;
+        }
+     .expanded {
+            width: 25vw;
+
+        }
+        .yo {
+            position: absolute;
+            top:5vh;  
+            right: 5vw;
+            font-size: 2rem;
+            font-family: 'BlueScreens';
+
+        }
+        .yo:hover {
+            cursor: pointer;
+        }
+      #overlay {
+      position: absolute;
+      color: white;
+      font-size: 20px;
+      display:flex;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0,0,50,0.3);
+      overflow: hidden;
+    }
+    a {
+        color: rgb(0,0,50);
+        text-decoration: none; 
+    }
+    .yo a {
+        color: white;
+        text-decoration: none; 
+    }
+    img {
+        width: 2rem;
+        height: 2rem;
+        margin: 0px;
+        padding: 0px;
+        fill-opacity: 0;    
+        
+    }
+    .title {
+        height: 80vh;
+        padding-left: 5vw;
+        display: flex;
+        align-items: flex-end;
+        font-family: 'BlueScreens Condensed black';
+        font-size: 10rem ;
+        margin-right: 5vw;
+    }
+    .desc {
+        display: inline;
+        padding: .5rem 2rem;
+        border: white 1px solid;
+        color: black;
+        background-color: white;
+        margin-left: 5vw;
+        font-family: 'BlueScreens bold';
+        font-size: 2rem;
+        position: relative;
+        top: .5rem;
+        transition:linear 0.3s;
+    }   
+    .navChild {
+        margin: 2rem 0px;
+        font-family: 'BlueScreens';
+        margin-left: calc(50% - 1rem);
+        font-size: 1.5rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+        width: 20vw;
+            transition: linear .3s;
+    }
+    .navChild span {
+        color: white;
+        display: inline-block;
+        font-size: 2rem;
+        line-height: 2rem;
+        visibility: hidden;
+        opacity: 0;
+        margin-left: 2rem;
+        transition: linear .5s;
+        transition-delay: 0s;
+
+    }
+    @media (max-width: 700px) {
+        #title {
+            font-size: 8rem;
+        }
+      }
+    @media (max-width: 1000px) {    
+        .nav {
+            visibility: hidden;
+        }
+        #menuToggle {
+            display: none;
+        }
+        .navChild {
+            visibility: visible;
+            position: absolute;
+            top: 9vh;
+            margin-top: 0;
+            right: 5vh;
+            width: 2rem;
+        }
+        .navChild:nth-of-type(2) {
+            right: 20vw;
+            margin-top: 0;
+            top: 11vh;
+        }
+        .navCnild a {
+            visibility: visible;
+        }
+    }
+    .faded {
+        animation: loadFade forwards;
+        animation-duration: 1s;
+    }
+    .loading progress {
+        animation-duration: .7s;
+    }
+    .navChild a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .expanded .navChild {
+        
+        margin-left: calc(20% - 1rem);
+    }
+    .expanded .navChild span {
+        
+        transition-delay: .5s;
+        visibility: visible;
+        opacity: 1;
+    }
+
+
+    a .material-symbols-outlined {
+        margin-left: 3rem;
+    }
+    .material-symbols-outlined {
+        margin-left: 0px !important;
+        visibility: visible !important;
+        position: relative !important;
+        opacity: 1 !important;
+            top: .1rem;
+           
+
+    font-variation-settings:
+    'FILL' 100,
+    'wght' 1000,
+    'GRAD' 0,
+    'opsz' 24
+    }
+   
+        html::-webkit-scrollbar {
+    display: none;
+    }
+
+        html {
+    scrollbar-width: none;
+    }
+
+        html {
+    -ms-overflow-style: none;
+    }
+
+    .container {
+
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100vw;
+        scroll-snap-type: y mandatory;
+        overflow-y: scroll;
+    }
+    @keyframes loadFade {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+            display: none;
+        }
+    }
+</style>
+</html>
