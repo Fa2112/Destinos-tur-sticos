@@ -18,7 +18,7 @@ export default defineConfig({
   compress: false,            
   watch: true,                 
   root: '/',
-  base: '/'
+  base: '/destinos-turisticos/'
 
 })]
 });
