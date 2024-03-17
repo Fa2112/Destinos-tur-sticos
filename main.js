@@ -2,6 +2,10 @@ import * as THREE from 'three';
 import gsap from "gsap";
 import fragment from "./shaders/fragment.glsl"
 import vertex from "./shaders/vertex.glsl"
+import img1 from "./img/img.jpg"
+import img2 from "./img/img2.jpg"
+import img3 from "./img/img3.jpg"
+import img4 from "./img/img4.jpg"
 
 
 const loadingManager = new THREE.LoadingManager();
@@ -28,25 +32,25 @@ let photos = [
     {
         title:  "Cataratas de Iguazú",
         description: "lorem ipsum",
-        photo:  textureLoader.load('img/img.jpg'),
+        photo:  textureLoader.load(img1),
         link: 'https://iguazuargentina.com',
     },
     {
         title:  "Ruinas de San Ignacio Mini",
         description: "lorem ipsum",
-        photo: textureLoader.load('img/img2.jpg'),
+        photo: textureLoader.load(img2),
         link: 'https://www.iguazuturismo.com.ar/que-hacer/ruinas-san-ignacio.html'
     },
     {
         title:   "Glaciar Perito Moreno",
         description: "lorem ipsum",
-        photo:  textureLoader.load('img/img3.jpg'),
+        photo:  textureLoader.load(img3),
         link: 'https://www.elcalafate.tur.ar/en-glaciar-perito-moreno.htm'
     },
     {
         title:  "Quebrada de Humahuaca",
         description: "lorem ipsum",
-        photo:   textureLoader.load('img/img4.jpg'),
+        photo:   textureLoader.load(img4),
         link: 'https://www.quebradadehumahuaca.com/info-gral/'
     },
 ];
