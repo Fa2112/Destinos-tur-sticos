@@ -11,12 +11,14 @@ export default defineConfig({
     '**/*.vert', '**/*.frag',
     '**/*.vs', '**/*.fs'
   ],
+  
   exclude: undefined,         
   warnDuplicatedImports: true, 
   defaultExtension: 'glsl',   
   compress: false,            
   watch: true,                 
   root: '/',
+  base: '/'
 
 })]
 });
