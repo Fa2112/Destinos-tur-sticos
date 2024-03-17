@@ -101,37 +101,6 @@ const planeMaterial = new THREE.ShaderMaterial({
 const plane = new THREE.Mesh(planeGeometry, planeMaterial);
 camera.position.set(0, 0, 1);
 scene.add(plane);
-
-//text geom
-
-// let textGeom;
-// let textMaterial;
-// let layout;
-// let text;
-// const fonTexture = textureLoader.load(fontTexture, (t) => {
-// let textGeom = createTextGeometry({
-//     text: 'hell',
-//     font: font,
-//     align: 'center',
-//     flipY: t.flipY
-// })
-
-    
-// textMaterial = new THREE.RawShaderMaterial(MSDFShader({
-//     map: t,
-//     transparent: true,
-//     color: 0xFFFFFF
-// }))
-
-// layout = textGeom.layout;
-
-// text = new THREE.Mesh(textGeom, textMaterial);
-// text.scale.set(0.01,0.01,0.01)
-// scene.add(text);
-// })
-
-
-
 const resize = () => {
     renderer.setSize(window.outerWidth, window.innerHeight);
     camera.aspect = window.outerWidth / window.innerHeight
