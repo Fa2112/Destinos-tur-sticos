@@ -4,7 +4,8 @@ import { defineConfig } from 'vite';
 import glsl from 'vite-plugin-glsl';
 
 export default defineConfig({
-
+ base: '/destinos-turisticos/',
+  publicPath: "/destinos-turisticos/",
   plugins: [glsl({
   include: [                   
     '**/*.glsl', '**/*.wgsl',
@@ -17,8 +18,6 @@ export default defineConfig({
   defaultExtension: 'glsl',   
   compress: false,            
   watch: true,                 
-  base: '/destinos-turisticos/',
-  publicPath: "/destinos-turisticos/"
 
 })]
 });
