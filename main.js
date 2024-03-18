@@ -7,6 +7,25 @@ import img2 from "./img/img2.jpg"
 import img3 from "./img/img3.jpg"
 import img4 from "./img/img4.jpg"
 
+let scrollStrength = 0.00035;
+
+
+function detectTrackPad(e) {
+  var isTrackpad = false;
+  if (e.wheelDeltaY) {
+    if (Math.abs(e.wheelDeltaY) !== 120) {
+      isTrackpad = true;
+    }
+  }
+  else if (e.deltaMode === 0) {
+    isTrackpad = true;
+  }
+  isTrackpad ? scrollStrength = 0.00035 : scrollStrength = 0.0035;
+}
+
+document.addEventListener("mousewheel", detectTrackPad, false);
+document.addEventListener("DOMMouseScroll", detectTrackPad, false);
+
 
 const loadingManager = new THREE.LoadingManager();
 const textureLoader = new THREE.TextureLoader(loadingManager);
@@ -14,6 +33,10 @@ const textureLoader = new THREE.TextureLoader(loadingManager);
 const progress = document.getElementById("progress");
 
 const loading = document.querySelector(".loading")
+
+
+document.addEventListener("wheel", detectTrackPad);
+document.addEventListener("DOMMouseScroll", detectTrackPad);
 
 
 loadingManager.onProgress = function(url, loaded,total) {
@@ -25,7 +48,6 @@ loadingManager.onProgress = function(url, loaded,total) {
 loadingManager.onLoad = function() {
     loading.classList.add("faded");
     progress.classList.add("faded");
-   
 }
 
 let photos = [
@@ -146,14 +168,19 @@ function animate() {
 let position = 0;
 let velocity = 0;
 
+
+
+
  
 document.addEventListener('wheel', function(e) {
+    
     if (e.deltaY < 10 && e.deltaY > -10) {
         return
     }
     
-    velocity += e.deltaY * 0.00035   
+    velocity += e.deltaY * scrollStrength
 });
+
 
 let startY;
 let currentY; 
