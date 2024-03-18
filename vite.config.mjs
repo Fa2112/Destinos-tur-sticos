@@ -17,7 +17,6 @@ export default defineConfig({
   defaultExtension: 'glsl',   
   compress: false,            
   watch: true,                 
-  root: '/',
   base: '/destinos-turisticos/',
   publicPath: "/destinos-turisticos/"
 
