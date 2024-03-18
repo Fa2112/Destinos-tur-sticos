@@ -18,7 +18,7 @@ export default defineConfig({
   compress: false,            
   watch: true,                 
   root: '/',
-  base: 'https://fa2112.github.io/destinos-turisticos/'
+  base: 'https://fa2112.github.io/destinos-turisticos'
 
 })]
 });
