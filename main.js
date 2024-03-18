@@ -4,8 +4,8 @@ import fragment from "./shaders/fragment.glsl"
 import vertex from "./shaders/vertex.glsl"
 import img1 from "./img/img.jpg"
 import img2 from "./img/img2.jpg"
-// import img3 from "./img/img3.jpg"
-// import img4 from "./img/img4.jpg"
+import img3 from "./img/img3.jpg"
+import img4 from "./img/img4.jpg"
 
 
 const loadingManager = new THREE.LoadingManager();
@@ -41,18 +41,18 @@ let photos = [
         photo: textureLoader.load(img2),
         link: 'https://www.iguazuturismo.com.ar/que-hacer/ruinas-san-ignacio.html'
     },
-    // {
-    //     title:   "Glaciar Perito Moreno",
-    //     description: "lorem ipsum",
-    //     photo:  textureLoader.load(img3),
-    //     link: 'https://www.elcalafate.tur.ar/en-glaciar-perito-moreno.htm'
-    // },
-    // {
-    //     title:  "Quebrada de Humahuaca",
-    //     description: "lorem ipsum",
-    //     photo:   textureLoader.load(img4),
-    //     link: 'https://www.quebradadehumahuaca.com/info-gral/'
-    // },
+    {
+        title:   "Glaciar Perito Moreno",
+        description: "lorem ipsum",
+        photo:  textureLoader.load(img3),
+        link: 'https://www.elcalafate.tur.ar/en-glaciar-perito-moreno.htm'
+    },
+    {
+        title:  "Quebrada de Humahuaca",
+        description: "lorem ipsum",
+        photo:   textureLoader.load(img4),
+        link: 'https://www.quebradadehumahuaca.com/info-gral/'
+    },
 ];
 const aspectRatio = window.outerWidth / window.innerHeight;
  
