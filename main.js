@@ -192,13 +192,16 @@ document.addEventListener('touchend', handleTouchEnd, { passive: true });
 
 function handleTouchStart(e) {
   startY = e.touches[0].clientY; 
+  if(currentY === undefined) currentY = startY;
 }
 
 function handleTouchMove(e) {
+
   currentY = e.touches[0].clientY; 
   const deltaY = currentY - startY; 
 
-  velocity += deltaY * 0.00080; 
+  velocity += deltaY * 0.00150; 
+  
   startY = currentY; 
 }
 
