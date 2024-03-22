@@ -200,7 +200,7 @@ function handleTouchMove(e) {
   currentY = e.touches[0].clientY; 
   const deltaY = currentY - startY; 
 
-  velocity += deltaY * 0.00150; 
+  velocity += deltaY * 0.00100; 
   
   startY = currentY; 
 }
