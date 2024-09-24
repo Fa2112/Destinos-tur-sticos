@@ -1,31 +1,14 @@
 import * as THREE from 'three';
 import gsap from "gsap";
-import fragment from "./shaders/fragment.glsl"
-import vertex from "./shaders/vertex.glsl"
-import img1 from "./img/img.jpg"
-import img2 from "./img/img2.jpg"
-import img3 from "./img/img3.jpg"
-import img4 from "./img/img4.jpg"
+import fragment from "@shaders/fragment.glsl"
+import vertex from "@shaders/vertex.glsl"
+import * as images from "@images/images"
+import detectTrackPad from '@utils/detectTrackpad';
 
 let scrollStrength = 0.00035;
 
-
-function detectTrackPad(e) {
-  var isTrackpad = false;
-  if (e.wheelDeltaY) {
-    if (Math.abs(e.wheelDeltaY) !== 120) {
-      isTrackpad = true;
-    }
-  }
-  else if (e.deltaMode === 0) {
-    isTrackpad = true;
-  }
-  isTrackpad ? scrollStrength = 0.00035 : scrollStrength = 0.0035;
-}
-
 document.addEventListener("mousewheel", detectTrackPad, false);
 document.addEventListener("DOMMouseScroll", detectTrackPad, false);
-
 
 const loadingManager = new THREE.LoadingManager();
 const textureLoader = new THREE.TextureLoader(loadingManager);
@@ -39,45 +22,46 @@ document.addEventListener("wheel", detectTrackPad);
 document.addEventListener("DOMMouseScroll", detectTrackPad);
 
 
-loadingManager.onProgress = function(url, loaded,total) {
-    progress.value = (loaded / total) * 100 ;
+loadingManager.onProgress = function (url, loaded, total) {
+    progress.value = (loaded / total) * 100;
 }
 
 
 
-loadingManager.onLoad = function() {
+loadingManager.onLoad = function () {
     loading.classList.add("faded");
     progress.classList.add("faded");
 }
 
+
 let photos = [
     {
-        title:  "Cataratas de Iguazú",
+        title: "Cataratas de Iguazú",
         description: "lorem ipsum",
-        photo:  textureLoader.load(img1),
+        photo: textureLoader.load(images.img1),
         link: 'https://iguazuargentina.com',
     },
     {
-        title:  "Ruinas de San Ignacio Mini",
+        title: "Ruinas de San Ignacio Mini",
         description: "lorem ipsum",
-        photo: textureLoader.load(img2),
+        photo: textureLoader.load(images.img2),
         link: 'https://www.iguazuturismo.com.ar/que-hacer/ruinas-san-ignacio.html'
     },
     {
-        title:   "Glaciar Perito Moreno",
+        title: "Glaciar Perito Moreno",
         description: "lorem ipsum",
-        photo:  textureLoader.load(img3),
+        photo: textureLoader.load(images.img3),
         link: 'https://www.elcalafate.tur.ar/en-glaciar-perito-moreno.htm'
     },
     {
-        title:  "Quebrada de Humahuaca",
+        title: "Quebrada de Humahuaca",
         description: "lorem ipsum",
-        photo:   textureLoader.load(img4),
+        photo: textureLoader.load(images.img4),
         link: 'https://www.quebradadehumahuaca.com/info-gral/'
     },
 ];
 const aspectRatio = window.outerWidth / window.innerHeight;
- 
+
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, aspectRatio, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer();
@@ -90,24 +74,24 @@ document.body.appendChild(renderer.domElement);
 const planeGeometry = new THREE.PlaneGeometry(1, 1, 1, 1);
 
 const planeMaterial = new THREE.ShaderMaterial({
-    side: THREE.DoubleSide,
+    side: THREE.FrontSide,
     uniforms: {
-        time: {type: 'f', value: 0},
+        time: { type: 'f', value: 0 },
         pixels: {
-          type:'v2',
-          value: new THREE.Vector2(window.outerWidth, window.innerHeight)  
+            type: 'v2',
+            value: new THREE.Vector2(window.outerWidth, window.innerHeight)
         },
         text: {
             type: 'f'
         },
         progress: {
-            type: 'f', value: 0 
+            type: 'f', value: 0
         },
         uvRate1: {
-            value: new THREE.Vector2(1,1)
+            value: new THREE.Vector2(1, 1)
         },
         accel: {
-            value: new THREE.Vector2(0.5,2.)
+            value: new THREE.Vector2(0.5, 2.)
         },
         texture1: {
             value: textureLoader.load('img/img.jpg')
@@ -126,17 +110,18 @@ scene.add(plane);
 const resize = () => {
     renderer.setSize(window.outerWidth, window.innerHeight);
     camera.aspect = window.outerWidth / window.innerHeight
-    planeMaterial.uniforms.uvRate1.value.y = window.innerHeight/window.outerWidth;
+    planeMaterial.uniforms.uvRate1.value.y = window.innerHeight / window.outerWidth;
 
     let distance = camera.position.z - plane.position.z;
+
     let height = 1;
-    camera.fov = 2*(180/Math.PI)*Math.atan(height/(2*distance));
+    camera.fov = 2 * (180 / Math.PI) * Math.atan(height / (2 * distance));
 
 
-    plane.scale.x =(window.outerWidth / window.innerHeight)
-    
+    plane.scale.x = (window.outerWidth / window.innerHeight)
+
     camera.updateProjectionMatrix();
-   
+
 };
 
 resize();
@@ -146,8 +131,8 @@ const toggleFunction = () => {
 
     document.querySelector(".content").addEventListener("onClick", () => {
         document.
-        console.log('ldskvnfn')
-    menu.classList.remove('expanded')
+            console.log('ldskvnfn')
+        menu.classList.remove('expanded')
     })
 
 }
@@ -157,10 +142,10 @@ document.getElementById('menuToggle').addEventListener('click', toggleFunction)
 
 let time = 0;
 function animate() {
-    time+= 0.05;
-    planeMaterial.uniforms.time.value =  time;   
-	requestAnimationFrame( animate );
-	renderer.render( scene, camera );
+    time += 0.05;
+    planeMaterial.uniforms.time.value = time;
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
 }
 
 
@@ -171,19 +156,19 @@ let velocity = 0;
 
 
 
- 
-document.addEventListener('wheel', function(e) {
-    
+
+document.addEventListener('wheel', function (e) {
+
     if (e.deltaY < 10 && e.deltaY > -10) {
         return
     }
-    
+
     velocity += e.deltaY * scrollStrength
 });
 
 
 let startY;
-let currentY; 
+let currentY;
 
 document.addEventListener('touchstart', handleTouchStart, { passive: true });
 document.addEventListener('touchmove', handleTouchMove, { passive: true });
@@ -191,64 +176,64 @@ document.addEventListener('touchend', handleTouchEnd, { passive: true });
 
 
 function handleTouchStart(e) {
-  startY = e.touches[0].clientY; 
-  if(currentY === undefined) currentY = startY;
+    startY = e.touches[0].clientY;
+    if (currentY === undefined) currentY = startY;
 }
 
 function handleTouchMove(e) {
 
-  currentY = e.touches[0].clientY; 
-  const deltaY = currentY - startY; 
+    currentY = e.touches[0].clientY;
+    const deltaY = currentY - startY;
 
-  velocity += deltaY * 0.00100; 
-  
-  startY = currentY; 
+    velocity += deltaY * 0.00100;
+
+    startY = currentY;
 }
 
 function handleTouchEnd() {
-  startY = null;
-  currentY = null;
+    startY = null;
+    currentY = null;
 }
 
 const timeLine = gsap.timeline();
 
 let timingTitle = 0;
 
-const cycle = function(value) {
-if (value >= 0) {
-    return Math.abs(Math.floor(position)) % photos.length
-}
+const cycle = function (value) {
+    if (value >= 0) {
+        return Math.abs(Math.floor(position)) % photos.length
+    }
     return Math.abs(Math.abs(Math.floor(position) % photos.length) - 3);
 }
 
-const cycleNext = function(value) {
-if (value >= 0) {
-    return Math.abs(Math.floor(position) + 1) % photos.length
-}
+const cycleNext = function (value) {
+    if (value >= 0) {
+        return Math.abs(Math.floor(position) + 1) % photos.length
+    }
     return Math.abs(Math.abs(Math.floor(position) + 1) % photos.length - 3);
 }
-const curTitle = function(value) {
-if (value >= 0) {
-    return Math.abs(Math.round(position)) % photos.length
-}
+const curTitle = function (value) {
+    if (value >= 0) {
+        return Math.abs(Math.round(position)) % photos.length
+    }
     return Math.abs(Math.abs(Math.round(position) % photos.length) - 3);
 }
 function raf() {
-    timingTitle+= velocity;
-    position+= velocity;    
+    timingTitle += velocity;
+    position += velocity;
 
 
     velocity *= 0.7;
-    
-    
-    
+
+
+
     let breakpoint = Math.round(position);
     let remainder = breakpoint - position;
 
-    position+= remainder*0.03;
-    
-    
-    planeMaterial.uniforms.progress.value = position ;
+    position += remainder * 0.03;
+
+
+    planeMaterial.uniforms.progress.value = position;
     let current = cycle(position)
     let next = cycleNext(position)
     let title = curTitle(position)
@@ -256,9 +241,9 @@ function raf() {
     planeMaterial.uniforms.texture1.value = photos[current].photo;
     planeMaterial.uniforms.texture2.value = photos[next].photo;
     document.getElementById('title').innerHTML = photos[title].title.toUpperCase();
-    document.getElementById('title').style.opacity = Math.abs(1- 2 * (Math.abs(position - Math.floor(position))))
-    document.getElementById('desc').style.opacity = Math.abs(1- 2 * (Math.abs(position - Math.floor(position))))
-    document.getElementById('direct').style.opacity = Math.abs(1- 2 * (Math.abs(position - Math.floor(position))))
+    document.getElementById('title').style.opacity = Math.abs(1 - 2 * (Math.abs(position - Math.floor(position))))
+    document.getElementById('desc').style.opacity = Math.abs(1 - 2 * (Math.abs(position - Math.floor(position))))
+    document.getElementById('direct').style.opacity = Math.abs(1 - 2 * (Math.abs(position - Math.floor(position))))
     document.getElementById('direct').setAttribute('href', photos[title].link)
 
 
