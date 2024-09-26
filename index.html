@@ -13,8 +13,10 @@
         <label for="progress">Cargando...</label>
         <progress id="progress" value="0" max="100"></progress>
     </div>
+    <div class="stepAwayButton" id="stepAwayButton">STEP BACK</div>
     <div id="overlay">
             <div class="yo"><a href="https://fa2112.github.io/" target="_blank">DISEÑO Y DESARROLLO POR FACUNDO TALAVERA</a></div>
+            
             <div class="nav"  id="nav">
                 <div class="navChild "><span id="menuToggle" class="material-symbols-outlined">
                     menu
@@ -86,6 +88,7 @@
         width: auto;
     }
 
+    
         .nav {
             transition: 1s cubic-bezier(0.55, -0.5, 0.265, 1.55);
             border-right: rgba(255,255,255, 0.5) 1px solid;
@@ -106,10 +109,46 @@
             right: 5vw;
             font-size: 2rem;
             font-family: 'BlueScreens';
-
         }
         .yo:hover {
             cursor: pointer;
+        }
+        .stepAwayButton {
+            opacity: 1 !important;
+            z-index: 10;
+    position: absolute;
+    bottom: 5vh;
+    right: 10vh;
+    font-size: 2rem;
+    font-family: 'BlueScreens';
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 25px;
+    color: black;
+    cursor: pointer;
+    border: solid rgba(0, 0, 0, 0.8) 1px;
+    transition: 0.3s ease;
+    animation: pulse 5s infinite;
+}
+
+.stepAwayButton:hover {
+    background-color: black;
+    border: solid rgba(255, 255, 255, 0.6) 1px;
+    color: white;
+}
+                @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+            20% {
+                transform: scale(1.1);
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+            }
+            40% {
+                transform: scale(1);
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
         }
       #overlay {
       position: absolute;
@@ -185,8 +224,13 @@
     }
     @media (max-width: 700px) {
         #title {
-            font-size: 8rem;
+            font-size: 6rem;
         }
+
+        .yo {
+        font-size: 1.6rem;
+        
+    }
         .navCnild {
             visibility: visible !important;
         }
@@ -196,6 +240,12 @@
         .nav {
             visibility: hidden;
         }
+        .stepAwayButton {
+        bottom: 4.5rem;
+        right: 2rem;
+        transform: translateY(-0.5rem);
+        }
+        
         #menuToggle {
             display: none;
         }
