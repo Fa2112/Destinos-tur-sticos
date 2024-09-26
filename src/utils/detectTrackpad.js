@@ -1,4 +1,4 @@
-function detectTrackPad(e) {
+function detectTrackPad(e, scrollStrength) {
     var isTrackpad = false;
     if (e.wheelDeltaY) {
         if (Math.abs(e.wheelDeltaY) !== 120) {

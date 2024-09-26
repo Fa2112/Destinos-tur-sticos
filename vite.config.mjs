@@ -25,6 +25,7 @@ export default defineConfig({
     alias: {
       '@shaders': path.resolve(__dirname, './src/shaders'),
       '@images': path.resolve(__dirname, './src/img'),
+      '@cubemaps': path.resolve(__dirname, './src/bg_cubemap_nebula'),
       '@utils': path.resolve(__dirname, './src/utils'),
     }
   }

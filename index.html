@@ -13,9 +13,10 @@
         <label for="progress">Cargando...</label>
         <progress id="progress" value="0" max="100"></progress>
     </div>
+    <div class="stepAwayButton" id="stepAwayButton">STEP BACK</div>
     <div id="overlay">
             <div class="yo"><a href="https://fa2112.github.io/" target="_blank">DISEÑO Y DESARROLLO POR FACUNDO TALAVERA</a></div>
-            <div class="stepAwayButton" id="stepAwayButton">STEP BACK</div>
+            
             <div class="nav"  id="nav">
                 <div class="navChild "><span id="menuToggle" class="material-symbols-outlined">
                     menu
@@ -113,6 +114,8 @@
             cursor: pointer;
         }
         .stepAwayButton {
+            opacity: 1 !important;
+            z-index: 10;
     position: absolute;
     bottom: 5vh;
     right: 10vh;
@@ -221,8 +224,13 @@
     }
     @media (max-width: 700px) {
         #title {
-            font-size: 8rem;
+            font-size: 6rem;
         }
+
+        .yo {
+        font-size: 1.6rem;
+        
+    }
         .navCnild {
             visibility: visible !important;
         }
@@ -232,6 +240,12 @@
         .nav {
             visibility: hidden;
         }
+        .stepAwayButton {
+        bottom: 4.5rem;
+        right: 2rem;
+        transform: translateY(-0.5rem);
+        }
+        
         #menuToggle {
             display: none;
         }
